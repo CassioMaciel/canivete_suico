@@ -30,7 +30,29 @@ def bhaskara(a: Union[int, float] = 0, b: Union[int, float] = 0, c: Union[int, f
     Traceback (most recent call last):
     ...
     ValueError: A equação 2.0x²+2.0x+2.0=0 não tem valor real
+
+    >>> bhaskara(a="joão",b=2,c=2)
+    Traceback (most recent call last):
+    ...
+    TypeError: Todas as entrada desse programa de ser um número
+
+    >>> bhaskara(a=2,b="joao",c=2)
+    Traceback (most recent call last):
+    ...
+    TypeError: Todas as entrada desse programa de ser um número
+
+    >>> bhaskara(a=2,b=2,c="joao")
+    Traceback (most recent call last):
+    ...
+    TypeError: Todas as entrada desse programa de ser um número
     """
+    if (type(a) != int and type(a) != float) :
+        raise TypeError("Todas as entrada desse programa de ser um número")
+    if (type(b) != int and type(b) != float):
+        raise TypeError("Todas as entrada desse programa de ser um número")
+    if (type(c) != int and type(c) != float):
+        raise TypeError("Todas as entrada desse programa de ser um número")
+
     a = float(a)
     b = float(b)
     c = float(c)
