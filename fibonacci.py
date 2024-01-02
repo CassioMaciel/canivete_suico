@@ -1,4 +1,5 @@
 def fibonacci(entrada: int):
+    # noinspection PyTypeChecker
     """
     --------------------------------------------------------------------------------------------------------------------
     Essa função serve para calcular o elemento da sequencia de indice entrada
@@ -28,7 +29,7 @@ def fibonacci(entrada: int):
     ...
     TypeError: A entrada desse programa de ser do tipo int
     """
-    if  type(entrada) != int:
+    if type(entrada) != int:
         raise TypeError("A entrada desse programa de ser do tipo int")
 
     f_n_menos_1 = 1

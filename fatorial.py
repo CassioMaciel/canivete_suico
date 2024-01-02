@@ -1,7 +1,5 @@
-from typing import Union
-
-
-def fatorial(entrada: Union[int, float]):
+def fatorial(entrada: int):
+    # noinspection PyTypeChecker
     """
     Essa função serve para calcular o fatorial de um numero inteiro fornecido.
     --------------------------------------------------------------------------------------------------------------------
