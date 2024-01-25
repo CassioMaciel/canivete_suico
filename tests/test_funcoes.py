@@ -1,15 +1,7 @@
-import doctest
 import datetime
 import pytest
 from pytest import mark
 import src as cs
-#from src.fatorial import fatorial
-#from src.bhaskara import bhaskara
-#from src.fibonacci import fibonacci
-#from src.bissexto import bissexto
-#from src import bissexto
-
-
 
 
 def test_fatorial_de_5_igual_120():
@@ -44,7 +36,6 @@ def test_bhaskara_2():
     assert cs.bhaskara(a=-3, b=18, c=-15) == [1.0, 5.0]
 
 
-
 def test_bhaskara_3():
     assert cs.bhaskara(a=2, b=4, c=2) == [-1.0, -1.0]
 
@@ -60,21 +51,21 @@ def test_baskara_5():
     with pytest.raises(TypeError) as excinfo:
         cs.bhaskara(a="joão", b=2, c=2)  # type: ignore
     assert str(excinfo.value) == 'Todas as entradas desse programa devem ' \
-                                    'ser um número'
+                                 'ser um número'
 
 
 def test_baskara_6():
     with pytest.raises(TypeError) as excinfo:
         cs.bhaskara(a=2, b="joao", c=2)  # type: ignore
     assert str(excinfo.value) == 'Todas as entradas desse programa devem ' \
-                                    'ser um número'
+                                 'ser um número'
 
 
 def test_baskara_7():
     with pytest.raises(TypeError) as excinfo:
         cs.bhaskara(a=2, b=2, c="joao")  # type: ignore
     assert str(excinfo.value) == 'Todas as entradas desse programa devem ' \
-                                    'ser um número'
+                                 'ser um número'
 
 
 def test_finonacci_1():
@@ -93,6 +84,7 @@ def test_bissexto_1():
     assert str(excinfo.value) == 'O ano deve ser do tipo datetime.date ou ' \
                                  'ser convertível para datetime.date.'
 
+
 @mark.parametrize('ano,resposta',
     [
         (2000, 1),
@@ -105,9 +97,9 @@ def test_bissexto_1():
         (2023, 0),
         (datetime.date(year=2023, month=1, day=1), 0),
         (2024, 1),
-        (datetime.date(year=2024,month=1,day=1), 1),
+        (datetime.date(year=2024, month=1, day=1), 1),
         (2100, 0),
-        (datetime.date(year=2100,month=1,day=1), 0)
+        (datetime.date(year=2100, month=1, day=1), 0)
     ])
 def test_bissexto_parametrize(ano, resposta):
     assert cs.bissexto(ano) == resposta
