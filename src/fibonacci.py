@@ -1,12 +1,22 @@
+"""
+Módulo Fibonacci
+
+Este módulo calcula o numero de fibonacci
+
+Funções Disponíveis:
+---------------------
+1. `fibonacci(entrada: int) -> numero`:
+"""
+
 def fibonacci(entrada: int):
     # noinspection PyTypeChecker
     """
-    --------------------------------------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------
     Essa função serve para calcular o elemento da sequencia de indice entrada
-    --------------------------------------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------
     Parameters
     entrada : int
-    --------------------------------------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------
     Returns
     >>> fibonacci(1)
     1
@@ -29,7 +39,7 @@ def fibonacci(entrada: int):
     ...
     TypeError: A entrada desse programa de ser do tipo int
     """
-    if type(entrada) != int:
+    if not isinstance(entrada, int):
         raise TypeError("A entrada desse programa de ser do tipo int")
 
     f_n_menos_1 = 1
@@ -45,6 +55,6 @@ def fibonacci(entrada: int):
     return f_n
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     import doctest
     doctest.testmod()
