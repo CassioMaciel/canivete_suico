@@ -64,8 +64,10 @@ def bissexto(ano: Union[int, datetime.date] = datetime.date.today()):
         try:
             ano = datetime.date(year=int(ano), month=1, day=1)
         except (ValueError, TypeError) as exc:
-            raise TypeError("O ano deve ser do tipo datetime.date ou ser "
-                            "convertível para datetime.date.") from exc
+            raise TypeError(
+                'O ano deve ser do tipo datetime.date ou ser '
+                'convertível para datetime.date.'
+            ) from exc
 
     if ano.year % 400 == 0 or (ano.year % 4 == 0 and ano.year % 100 != 0):
         return 1
@@ -73,6 +75,7 @@ def bissexto(ano: Union[int, datetime.date] = datetime.date.today()):
     return 0
 
 
-if __name__ == '__main__': # pragma: no cover
+if __name__ == '__main__':   # pragma: no cover
     import doctest
+
     doctest.testmod()

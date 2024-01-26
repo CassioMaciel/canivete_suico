@@ -8,8 +8,9 @@ Funções Disponíveis:
 1. `fatorial(entrada: int) -> fatorial`:
    Resolve a equação quadrática ax^2 + bx + c = 0 e retorna as raízes como uma
     tupla (x1, x2).
-
 """
+
+
 def fatorial(entrada: int) -> int:
     # noinspection PyTypeChecker
     """
@@ -53,17 +54,18 @@ def fatorial(entrada: int) -> int:
     """
 
     if not isinstance(entrada, int):
-        raise TypeError("A entrada desse programa só pode ser do tipo int")
+        raise TypeError('A entrada desse programa só pode ser do tipo int')
     if entrada < 0:
         raise ValueError('So existe fatorial de numero positivo')
 
     output = 1
-    for i in range(entrada+1)[1:]:
+    for i in range(entrada + 1)[1:]:
         output *= i
 
     return output
 
 
-if __name__ == '__main__': # pragma: no cover
+if __name__ == '__main__':   # pragma: no cover
     import doctest
+
     doctest.testmod()

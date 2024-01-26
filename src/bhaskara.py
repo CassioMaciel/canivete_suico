@@ -9,14 +9,16 @@ Funções Disponíveis:
 1. `bhaskara(a, b, c) -> Tuple[float, float]`:
    Resolve a equação quadrática ax^2 + bx + c = 0 e retorna as raízes como uma
     tupla (x1, x2).
-
 """
 
 from typing import Union
 
 
-def bhaskara(a: Union[int, float] = 0, b: Union[int, float] = 0, c: Union[
-        int, float] = 0):
+def bhaskara(
+    a: Union[int, float] = 0,
+    b: Union[int, float] = 0,
+    c: Union[int, float] = 0,
+):
     """
     Essa função serve para calcular as raizes reais de
     uma equação de segundo grau.
@@ -62,17 +64,17 @@ def bhaskara(a: Union[int, float] = 0, b: Union[int, float] = 0, c: Union[
     TypeError: Todas as entradas desse programa devem ser um número
     """
     if not isinstance(a, (int, float)):
-        raise TypeError("Todas as entradas desse programa devem ser um número")
+        raise TypeError('Todas as entradas desse programa devem ser um número')
     if not isinstance(b, (int, float)):
-        raise TypeError("Todas as entradas desse programa devem ser um número")
+        raise TypeError('Todas as entradas desse programa devem ser um número')
     if not isinstance(c, (int, float)):
-        raise TypeError("Todas as entradas desse programa devem ser um número")
+        raise TypeError('Todas as entradas desse programa devem ser um número')
 
     a = float(a)
     b = float(b)
     c = float(c)
 
-    delta = b ** 2 - 4 * a * c
+    delta = b**2 - 4 * a * c
 
     if delta == 0:
         x = -b / (2 * a)
@@ -81,11 +83,12 @@ def bhaskara(a: Union[int, float] = 0, b: Union[int, float] = 0, c: Union[
     if delta < 0:
         raise ValueError(f'A equação {a}x²+{b}x+{c}=0 não tem valor real')
 
-    x1 = (-b + delta ** 0.5) / (2 * a)
-    x2 = (-b - delta ** 0.5) / (2 * a)
+    x1 = (-b + delta**0.5) / (2 * a)
+    x2 = (-b - delta**0.5) / (2 * a)
     return [x1, x2]
 
 
 if __name__ == '__main__':  # pragma: no cover
     import doctest
+
     doctest.testmod()

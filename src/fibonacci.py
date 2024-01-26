@@ -8,6 +8,7 @@ Funções Disponíveis:
 1. `fibonacci(entrada: int) -> numero`:
 """
 
+
 def fibonacci(entrada: int):
     # noinspection PyTypeChecker
     """
@@ -40,7 +41,7 @@ def fibonacci(entrada: int):
     TypeError: A entrada desse programa de ser do tipo int
     """
     if not isinstance(entrada, int):
-        raise TypeError("A entrada desse programa de ser do tipo int")
+        raise TypeError('A entrada desse programa de ser do tipo int')
 
     f_n_menos_1 = 1
     f_n_menos_2 = 1
@@ -57,4 +58,5 @@ def fibonacci(entrada: int):
 
 if __name__ == '__main__':  # pragma: no cover
     import doctest
+
     doctest.testmod()
