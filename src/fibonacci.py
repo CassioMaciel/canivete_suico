@@ -9,7 +9,7 @@ Funções Disponíveis:
 """
 
 
-def fibonacci(entrada: int):
+def fibonacci(entrada: int) -> int:
     # noinspection PyTypeChecker
     """
     ---------------------------------------------------------------------------

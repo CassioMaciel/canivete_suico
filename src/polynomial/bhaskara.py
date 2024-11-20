@@ -12,13 +12,14 @@ Funções Disponíveis:
 """
 
 from typing import Union
+from typing import List
 
 
 def bhaskara(
     a: Union[int, float] = 0,
     b: Union[int, float] = 0,
     c: Union[int, float] = 0,
-):
+) -> List[float]:
     """
     Essa função serve para calcular as raizes reais de
     uma equação de segundo grau.

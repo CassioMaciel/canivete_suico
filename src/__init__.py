@@ -7,6 +7,8 @@ desperates moments
 
 from .fatorial import fatorial
 from .fibonacci import fibonacci
-from .bhaskara import bhaskara
 from .bissexto import bissexto
 from .clear import clear
+from .check_number import check_int, check_float
+from .check_time import check_time
+from .polynomial.bhaskara import bhaskara

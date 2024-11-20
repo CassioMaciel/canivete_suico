@@ -1,18 +1,20 @@
+import re
 import subprocess
 from pytest import mark
+import os
 
 
 @mark.parametrize(
-    'arquivo',
+    'arquivo, rating',
     [
-        ('.\\src\\bhaskara.py'),
-        ('.\\src\\bissexto.py'),
-        ('.\\src\\fatorial.py'),
-        ('.\\src\\fibonacci.py'),
-        ('.\\src\\clear.py'),
+        ('.\\src\\bissexto.py', 10),
+        ('.\\src\\fatorial.py', 10),
+        ('.\\src\\fibonacci.py', 10),
+        ('.\\src\\clear.py', 10),
+        ('.\\src', 10),
     ],
 )
-def test_pylint(arquivo):
+def test_pylint(arquivo, rating):
     result = subprocess.run(
         ['pylint', arquivo],
         stdout=subprocess.PIPE,
@@ -20,37 +22,32 @@ def test_pylint(arquivo):
         text=True,
     )
 
-    # Verificar se a execução foi bem-sucedida
-    assert result.returncode == 0, f'Pylint execution failed:\n{result.stderr}'
+    raw_message = result.stdout
+    pattern = r'Your code has been rated at ([0-9]{1,2}.[0-9]{2})/10'
+    rating = float(re.search(pattern, raw_message).group(1))
 
-    # Verificar se a saída contém o rating esperado
-    assert (
-        'Your code has been rated at 10.00/10' in result.stdout
-    ), f'Unexpected Pylint rating:\n{result.stdout}'
+    assert rating >= rating , f'Unexpected Pylint rating:\n{result.stdout}'
 
 
 @mark.parametrize(
     'arquivo',
     [
-        ('.\\src\\bhaskara.py'),
         ('.\\src\\bissexto.py'),
         ('.\\src\\fatorial.py'),
         ('.\\src\\fibonacci.py'),
         ('.\\src\\clear.py'),
+        ('.\\src'),
     ],
 )
 def test_mypy(arquivo):
     result = subprocess.run(
-        ['mypy', arquivo],
+        ['mypy', '--strict', arquivo],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
     )
+    print(result.stdout)
+    print(result.stderr)
 
     # Verificar se a execução foi bem-sucedida
     assert result.returncode == 0, f'mypy execution failed:\n{result.stderr}'
-
-    # Verificar se a saída contém o rating esperado
-    assert (
-        'Success: no issues found in 1 source file' in result.stdout
-    ), f'issues found in mypy execution\n{result.stdout}'

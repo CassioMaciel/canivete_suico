@@ -11,11 +11,11 @@ import datetime
 from typing import Union
 
 
-def bissexto(ano: Union[int, datetime.date] = datetime.date.today()):
+def bissexto(ano: Union[int, datetime.date] = datetime.date.today()) -> bool:
     """
     ---------------------------------------------------------------------------
     Diz se o ano informado é bissexto ou não.
-    Retorna 1 se for bissexto e 0 se não for
+    Retorna True se for bissexto e False se não for
     Funciona com formato datetime ou inteiro
     Obs.: Se o ano não for informado, usa o atual.
     ---------------------------------------------------------------------------
@@ -34,29 +34,29 @@ def bissexto(ano: Union[int, datetime.date] = datetime.date.today()):
     http://en.wikipedia.org/wiki/Leap_year
     Uso:
     >>> bissexto(2000)
-    1
+    True
     >>> bissexto(datetime.date(year=2000, month=1, day=1))
-    1
+    True
     >>> bissexto(2003)
-    0
+    False
     >>> bissexto(datetime.date(year=2003, month=1, day=1))
-    0
+    False
     >>> bissexto(2022)
-    0
+    False
     >>> bissexto(datetime.date(year=2022, month=1, day=1))
-    0
+    False
     >>> bissexto(2023)
-    0
+    False
     >>> bissexto(datetime.date(year=2023, month=1, day=1))
-    0
+    False
     >>> bissexto(2024)
-    1
+    True
     >>> bissexto(datetime.date(year=2024,month=1,day=1))
-    1
+    True
     >>> bissexto(2100)
-    0
+    False
     >>> bissexto(datetime.date(year=2100,month=1,day=1))
-    0
+    False
     """
 
     if not isinstance(ano, datetime.date):
@@ -70,9 +70,9 @@ def bissexto(ano: Union[int, datetime.date] = datetime.date.today()):
             ) from exc
 
     if ano.year % 400 == 0 or (ano.year % 4 == 0 and ano.year % 100 != 0):
-        return 1
+        return True
 
-    return 0
+    return False
 
 
 if __name__ == '__main__':   # pragma: no cover
